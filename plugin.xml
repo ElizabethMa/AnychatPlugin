@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="com.cordova.plugin.AnyChatPlugin" version="0.1.0">
+  <name>ANYCHAT</name>
+  <description>AnyChat library.</description>
+  <author>Yanqiong Ma</author>
+  <license>GPLv2</license>
+  <keywords>cordova,anychat,plugin</keywords>
+
+  <js-module name="AnyChat" src="www/AnyChat.js">
+    <clobbers target="navigator.AnyChat"/>
+  </js-module>
+
+  <platform name="android">
+    <config-file parent="/*" target="res/xml/config.xml">
+      <feature name="AnyChatPlugin">
+        <param name="android-package" value="com.cordova.plugin.AnyChatPlugin"/>
+      </feature>
+    </config-file>
+
+    <config-file parent="/manifest" target="AndroidManifest.xml">
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> 
+        <uses-permission android:name="android.permission.CAMERA" /> 
+        <uses-permission android:name="android.permission.INTERNET" /> 
+        <uses-permission android:name="android.permission.RECORD_AUDIO" /> 
+        <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/> 
+        <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    </config-file>
+
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+		<activity android:configChanges="" android:name="com.anychat.zhongqihuo.VideoActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="anychat.plugin" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+	</config-file>
+
+	<config-file target="res/values/strings.xml" parent="/*">
+        <string name="endCall1">结束通话</string>
+	</config-file>
+
+    <source-file src="src/android/AnyChatPlugin.java" target-dir="src/com/cordova/plugin"/>
+    <source-file src="src/android/com/bairuitech/anychat/AnyChatAudioHelper.java" target-dir="src/com/bairuitech/anychat" />
+    <source-file src="src/android/com/bairuitech/anychat/AnyChatBaseEvent.java" target-dir="src/com/bairuitech/anychat" />
+    <source-file src="src/android/com/bairuitech/anychat/AnyChatCameraHelper.java" target-dir="src/com/bairuitech/anychat" />
+    <source-file src="src/android/com/bairuitech/anychat/AnyChatCoreSDK.java" target-dir="src/com/bairuitech/anychat" />
+    <source-file src="src/android/com/bairuitech/anychat/AnyChatDataEncDecEvent.java" target-dir="src/com/bairuitech/anychat" />
+    <source-file src="src/android/com/bairuitech/anychat/AnyChatDefine.java" target-dir="src/com/bairuitech/anychat" />
+    <source-file src="src/android/com/bairuitech/anychat/AnyChatObjectDefine.java" target-dir="src/com/bairuitech/anychat" />
+    <source-file src="src/android/com/bairuitech/anychat/AnyChatObjectEvent.java" target-dir="src/com/bairuitech/anychat" />
+    <source-file src="src/android/com/bairuitech/anychat/AnyChatOutParam.java" target-dir="src/com/bairuitech/anychat" />
+    <source-file src="src/android/com/bairuitech/anychat/AnyChatPrivateChatEvent.java" target-dir="src/com/bairuitech/anychat" />
+    <source-file src="src/android/com/bairuitech/anychat/AnyChatRecordEvent.java" target-dir="src/com/bairuitech/anychat" />
+    <source-file src="src/android/com/bairuitech/anychat/AnyChatSensorHelper.java" target-dir="src/com/bairuitech/anychat" />
+    <source-file src="src/android/com/bairuitech/anychat/AnyChatStateChgEvent.java" target-dir="src/com/bairuitech/anychat" />
+    <source-file src="src/android/com/bairuitech/anychat/AnyChatTextMsgEvent.java" target-dir="src/com/bairuitech/anychat" />
+    <source-file src="src/android/com/bairuitech/anychat/AnyChatTransDataEvent.java" target-dir="src/com/bairuitech/anychat" />
+    <source-file src="src/android/com/bairuitech/anychat/AnyChatUserInfoEvent.java" target-dir="src/com/bairuitech/anychat" />
+    <source-file src="src/android/com/bairuitech/anychat/AnyChatVideoCallEvent.java" target-dir="src/com/bairuitech/anychat" />
+    <source-file src="src/android/com/bairuitech/anychat/AnyChatVideoHelper.java" target-dir="src/com/bairuitech/anychat" />
+
+    <source-file src="src/android/com/anychat/config/ConfigEntity.java" target-dir="src/com/anychat/config" />
+    <source-file src="src/android/com/anychat/config/ConfigService.java" target-dir="src/com/anychat/config" />
+
+    <source-file src="src/android/com/anychat/zhongqihuo/VideoActivity.java" target-dir="src/com/anychat/zhongqihuo" />
+
+    <framework src="com.android.support:support-v4:+" value="gradle" />
+
+    <source-file src="src/android/libs/arm64-v8a/libanychatcore.so" target-dir="libs/arm64-v8a" />
+    <source-file src="src/android/libs/arm64-v8a/libaudio_preprocessing.so" target-dir="libs/arm64-v8a" />
+    <source-file src="src/android/libs/arm64-v8a/libmediacore.so" target-dir="libs/arm64-v8a" />
+    <source-file src="src/android/libs/arm64-v8a/libmediashow.so" target-dir="libs/arm64-v8a" />
+    <source-file src="src/android/libs/arm64-v8a/libmediautil_v8.so" target-dir="libs/arm64-v8a" />
+
+    <source-file src="src/android/libs/armeabi/libanychatcore.so" target-dir="libs/armeabi" />
+    <source-file src="src/android/libs/armeabi/libaudio_preprocessing.so" target-dir="libs/armeabi" />
+    <source-file src="src/android/libs/armeabi/libmediacore.so" target-dir="libs/armeabi" />
+    <source-file src="src/android/libs/armeabi/libmediahwcodec_rk30_4.1.so" target-dir="libs/armeabi" />
+    <source-file src="src/android/libs/armeabi/libmediahwcodec_rk30_4.2.so" target-dir="libs/armeabi" />
+    <source-file src="src/android/libs/armeabi/libmediashow.so" target-dir="libs/armeabi" />
+    <source-file src="src/android/libs/armeabi/libmediautil_v6.so" target-dir="libs/armeabi" />
+    <source-file src="src/android/libs/armeabi/libmediautil_v7.so" target-dir="libs/armeabi" />
+
+    <source-file src="src/android/libs/x86/libanychatcore.so" target-dir="libs/x86" />
+    <source-file src="src/android/libs/x86/libaudio_preprocessing.so" target-dir="libs/x86" />
+    <source-file src="src/android/libs/x86/libmediacore.so" target-dir="libs/x86" />
+    <source-file src="src/android/libs/x86/libmediashow.so" target-dir="libs/x86" />
+    <source-file src="src/android/libs/x86/libmediautil_v7.so" target-dir="libs/x86" />
+
+    <source-file src="src/android/res/drawable/video_bg.xml" target-dir="res/drawable/" />
+
+    <source-file src="src/android/res/drawable-hdpi/button_background.xml" target-dir="res/drawable-hdpi/" />
+    <source-file src="src/android/res/drawable-hdpi/camera_off.png" target-dir="res/drawable-hdpi/" />
+    <source-file src="src/android/res/drawable-hdpi/camera_on.png" target-dir="res/drawable-hdpi/" />
+    <source-file src="src/android/res/drawable-hdpi/speak_off.png" target-dir="res/drawable-hdpi/" />
+    <source-file src="src/android/res/drawable-hdpi/speak_on.png" target-dir="res/drawable-hdpi/" />
+    <source-file src="src/android/res/drawable-hdpi/switchvideo.png" target-dir="res/drawable-hdpi/" />
+
+    <source-file src="src/android/res/layout/video_frame.xml" target-dir="res/layout/" />
+    <source-file src="src/android/res/layout/video_session.xml" target-dir="res/layout/" />
+
+    <source-file src="src/android/res/values/colors.xml" target-dir="res/values/" />
+    <source-file src="src/android/res/values/styles.xml" target-dir="res/values/" />
+
+  </platform>
+
+<!-- ios -->
+  <platform name="ios">
+
+    <plugins-plist key="AnyChatPlugin" string="AnyChatPlugin" />
+
+    <config-file target="config.xml" parent="/*">
+        <feature name="AnyChatPlugin">
+            <param name="ios-package" value="CDVAnyChatPlugin" />
+        </feature>
+    </config-file>
+    
+    <header-file src="src/ios/CDVAnyChatPlugin.h" />
+    <source-file src="src/ios/CDVAnyChatPlugin.m" />
+    <header-file src="src/ios/AnyChatDefine.h" />
+    <header-file src="src/ios/AnyChatErrorCode.h" />
+    <header-file src="src/ios/AnyChatObjectDefine.h" />
+    <header-file src="src/ios/AnyChatPlatform.h" />
+    <header-file src="src/ios/VideoChatController.h" />
+    <source-file src="src/ios/VideoChatController.m" />
+    <source-file src="src/ios/VideoChatController.xib" />
+      
+      <!--lib/OtherFile/-->
+      <source-file src="src/ios/libs/libanychatcore.a" framework="true"/>
+      <source-file src="src/ios/libs/libavcodec.a" framework="true"/>
+      <source-file src="src/ios/libs/libavformat.a" framework="true"/>
+      <source-file src="src/ios/libs/libavutil.a" framework="true"/>
+      <source-file src="src/ios/libs/libcelt0.a" framework="true"/>
+      <source-file src="src/ios/libs/libmediacore.a" framework="true"/>
+      <source-file src="src/ios/libs/libmediashow.a" framework="true"/>
+      <source-file src="src/ios/libs/libmediautil.a" framework="true"/>
+      <source-file src="src/ios/libs/libmp3lame.a" framework="true"/>
+      <source-file src="src/ios/libs/libopencore-amrwb.a" framework="true"/>
+      <source-file src="src/ios/libs/libswresample.a" framework="true"/>
+      <source-file src="src/ios/libs/libswscale.a" framework="true"/>
+      <source-file src="src/ios/libs/libvo-amrwbenc.a" framework="true"/>
+      <source-file src="src/ios/libs/libvpx.a" framework="true"/>
+      <source-file src="src/ios/libs/libx264.a" framework="true"/>
+      <source-file src="src/ios/libs/libyuv_neon.a" framework="true"/>
+      <source-file src="src/ios/libs/libyuv.a" framework="true"/>
+      <source-file src="src/ios/libs/audioprocess/libaudio_processing_neon.a" framework="true"/>
+      <source-file src="src/ios/libs/audioprocess/libaudio_processing_sse2.a" framework="true"/>
+      <source-file src="src/ios/libs/audioprocess/libaudio_processing.a" framework="true"/>
+      <source-file src="src/ios/libs/audioprocess/libcommon_audio_neon.a" framework="true"/>
+      <source-file src="src/ios/libs/audioprocess/libcommon_audio_sse2.a" framework="true"/>
+      <source-file src="src/ios/libs/audioprocess/libcommon_audio.a" framework="true"/>
+      <source-file src="src/ios/libs/audioprocess/librtc_base_approved.a" framework="true"/>
+      <source-file src="src/ios/libs/audioprocess/libsystem_wrappers.a" framework="true"/>
+
+      <!--Sys framework-->
+      <framework src="AVFoundation.framework" />
+      <framework src="AudioToolbox.framework" />
+      <framework src="QuartzCore.framework" />
+      <framework src="CoreMedia.framework" />
+      <framework src="CoreVideo.framework" />
+      <framework src="CoreAudio.framework" />
+      <framework src="libc++.dylib" />
+      <framework src="libstdc++.dylib" />
+      <framework src="libstdc++.6.dylib" />
+
+  </platform>
+
+  <!-- <dependency id="org.apache.cordova.camera"/> -->
+  <!-- <dependency id="org.apache.cordova.file"/> -->
+</plugin>
