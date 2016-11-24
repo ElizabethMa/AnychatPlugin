@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="com.cordova.plugin.AnyChatPlugin" version="0.1.0">
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-anychat" version="0.1.0">
   <name>ANYCHAT</name>
   <description>AnyChat library.</description>
   <author>Yanqiong Ma</author>
